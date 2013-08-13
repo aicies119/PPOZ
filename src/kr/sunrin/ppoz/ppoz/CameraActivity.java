@@ -59,15 +59,27 @@ public class CameraActivity extends Activity {
 	
 	//사진 저장
 	PictureCallback mPicture = new PictureCallback() {
-		String time = new String();
+		StringBuilder name = new StringBuilder();
 		@Override
 		public void onPictureTaken(byte[] data, Camera camera) {
+			SharedPreferences f_name = getSharedPreferences ("FileName", 0);
+			String f_date = f_name.getString("Date", "");
+			String date = "";
+			int cnt = f_name.getInt("Num", 1);
 			Calendar cal = new GregorianCalendar();
-			int cnt = 0;
-			time = (String.format("%d-%d-%d-%d", cal.get(Calendar.YEAR), 
-					cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH), ++cnt));
+			
+			date = String.format("%d-%d-%d", cal.get(Calendar.YEAR), 
+					cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+			
+			if(!date.equals(f_date)) {
+				cnt = 1;
+			}
+			
+			name.append(date);
+			name.append(String.format("-%d", cnt));
+			
 			String sd = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
-			String path = sd + "/" + time + ".jpg";
+			String path = sd + "/" + name + ".jpg";
 			
 			File fpath = new File(sd);
 			if(!fpath.exists()) {
@@ -92,6 +104,17 @@ public class CameraActivity extends Activity {
 			sendBroadcast(intent);
 			
 			Toast.makeText(CameraActivity.this, "사진 저장 완료 : " + path, 0).show();
+			
+			SharedPreferences.Editor edit = f_name.edit();
+			
+			cnt++;
+			edit.putString("Date", date);
+			edit.putInt("Num", cnt);
+			
+			edit.commit();
+			name.setLength(0);
+			
+			
 			mSurface.mCamera.startPreview();
 		}
 	};
