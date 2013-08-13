@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/main_back_x"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TableRow>
+            <Button
+                android:id="@+id/p_ppoz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="mainOnClick"
+                android:padding="20dp"
+                android:text="개인포즈" />
+            <Button
+                android:id="@+id/g_ppoz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="mainOnClick"
+                android:padding="20dp"
+                android:text="단체포즈" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/c_ppoz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="mainOnClick"
+                android:padding="20dp"
+                android:text="커플포즈"/>
+            <Button
+                android:id="@+id/b_ppoz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="mainOnClick"
+                android:padding="20dp"
+                android:text="베스트 30"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
