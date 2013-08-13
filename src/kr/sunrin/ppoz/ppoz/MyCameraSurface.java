@@ -27,7 +27,7 @@ class MyCameraSurface extends SurfaceView implements SurfaceHolder.Callback {
 		} catch (IOException e) {
 			mCamera.release();
 			mCamera = null;
-		}
+		}    
 	}
 
     // 표면 파괴시 카메라도 파괴한다.

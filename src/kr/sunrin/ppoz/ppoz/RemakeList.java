@@ -38,7 +38,7 @@ public class RemakeList extends Activity {
 		Item item;
 		item = new Item(R.drawable.ko, "1");
 		arlist.add(item);
-		item = new Item(R.drawable.ko, "2");
+		item = new Item(R.drawable.ko, "2");   
 		arlist.add(item);
 		item = new Item(R.drawable.ko, "3");
 		arlist.add(item);
