@@ -32,7 +32,7 @@ public class RemakeList extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.remake_list);
-		
+		 
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
