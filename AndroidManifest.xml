@@ -38,8 +38,11 @@
         <activity
             android:name="kr.sunrin.ppoz.ppoz.RemakeList"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.SplashActivity"
+            android:label="@string/title_activity_splash" >
+        </activity>
     </application>
 
 </manifest>
