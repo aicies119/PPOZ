@@ -2,11 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".CameraActivity" >
+    <kr.sunrin.ppoz.ppoz.MyCameraSurface
+        android:id="@+id/preview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="118dip"
         android:layout_height="match_parent"
+        android:layout_gravity="right"
         android:background="#404040"
         >
         <Button
@@ -28,9 +35,4 @@
             android:paddingBottom="10pt"
             />
     </LinearLayout>
-    <kr.sunrin.ppoz.ppoz.MyCameraSurface
-        android:id="@+id/preview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
 </LinearLayout>
