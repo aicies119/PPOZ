@@ -10,17 +10,37 @@ import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
 import android.net.*;
 import android.os.*;
+import android.util.*;
 import android.view.*;
 import android.widget.*;
 
 public class CameraActivity extends Activity {
 	MyCameraSurface mSurface;
+	Context context = this;
 	Button mShutter;
+	int px;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Window win = getWindow();
 		super.onCreate(savedInstanceState);
 		win.setContentView(R.layout.activity_camera);
+		
+		//SharedPreferences px_pre = getSharedPreferences("px", 0);
+		//px = px_pre.getInt("px", 0);
+		
+		
+		//가이드 영역 레이어 생성
+		LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.camera_guide, null);
+		LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+		
+		ImageView img = new ImageView(this);
+		img.setImageResource(R.drawable.p_guide_1);
+		LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+		paramImage.setMargins(0, 0, (int)pxFromDp(100), 0);
+		linear.addView(img, paramImage);
+		
+		win.addContentView(linear, paramlinear);
 		
 		mSurface = (MyCameraSurface)findViewById(R.id.preview);
 		
@@ -41,12 +61,11 @@ public class CameraActivity extends Activity {
 				mSurface.mCamera.takePicture(null, null, mPicture);
 			}
 		});
-		
-		LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.camera_guide, null);
-		LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-		
-		win.addContentView(linear, paramlinear);
+	}
+	
+	private float pxFromDp(float dp)
+	{
+	    return dp * context.getResources().getDisplayMetrics().density;
 	}
 	
 	//포커싱 성공하면 촬영 허가

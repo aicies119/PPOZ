@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="100dip"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
+    android:layout_gravity="right"
+    android:background="#000000" >
+    <Button
+        android:id="@+id/focus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="focus"
+        android:textSize="10pt"
+        android:paddingTop="8pt"
+        android:paddingBottom="10pt"
         />
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:onClick="picOnClick"
-        android:text="촬영"
-        android:layout_weight="1"
+        android:id="@+id/shutter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="shutter"
+        android:textSize="10pt"
+        android:paddingTop="8pt"
+        android:paddingBottom="10pt"
         />
-
 </LinearLayout>

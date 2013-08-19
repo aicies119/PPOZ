@@ -6,15 +6,18 @@
     tools:context=".CameraActivity" >
     <kr.sunrin.ppoz.ppoz.MyCameraSurface
         android:id="@+id/preview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         />
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="118dip"
+		android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:background="#404040"
+        android:gravity="center_vertical"
+        android:background="#000000"
+        android:layout_weight="5"
         >
         <Button
             android:id="@+id/focus"

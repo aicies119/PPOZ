@@ -5,7 +5,12 @@
     android:background="@drawable/mainmenu"
     android:gravity="bottom|center_horizontal"
     android:orientation="vertical" >
-
+	<Button 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:onClick="mOnClick"
+	    android:layout_gravity="right"
+	    />
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

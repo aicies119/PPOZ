@@ -24,11 +24,6 @@
             android:name="kr.sunrin.ppoz.ppoz.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="kr.sunrin.ppoz.ppoz.CameraActivity"
@@ -41,7 +36,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="kr.sunrin.ppoz.ppoz.SplashActivity"
-            android:label="@string/title_activity_splash" >
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
