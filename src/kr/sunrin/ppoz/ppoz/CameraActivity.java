@@ -25,10 +25,6 @@ public class CameraActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		win.setContentView(R.layout.activity_camera);
 		
-		//SharedPreferences px_pre = getSharedPreferences("px", 0);
-		//px = px_pre.getInt("px", 0);
-		
-		
 		//가이드 영역 레이어 생성
 		LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.camera_guide, null);

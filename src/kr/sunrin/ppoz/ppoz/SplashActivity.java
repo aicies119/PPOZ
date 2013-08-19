@@ -45,13 +45,6 @@ public class SplashActivity extends Activity {
 		Handler handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
-				//SharedPreferences px_pre = getSharedPreferences("px", 0);
-				//SharedPreferences.Editor px_edit = px_pre.edit();
-				//int px = (int)(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 534, context.getResources().getDisplayMetrics()));
-				
-				//px_edit.putInt("px", px);
-				//px_edit.commit();
-				
 				startActivity(intent);
 				finish();
 			}
