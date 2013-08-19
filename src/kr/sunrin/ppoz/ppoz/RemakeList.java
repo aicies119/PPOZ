@@ -15,9 +15,9 @@ public class RemakeList extends Activity {
 	View popupview; 						// 팝업윈도우에 띄우는 뷰
 	LinearLayout linear; 					// 어디에 팝업윈도우를 띄울지 가르키는 뷰
 	ImageView img; 							// 팝업뷰 이미지 전달용
-	boolean openPop;
+	boolean openPop;						// 팝업창 상태
 	Intent intent;
-	int pos;
+	int pos;								// position 전달용
 
 	class Item { 							// 리스트 데이터를 채우는 틀
 		Item(int image, String name) {
@@ -84,7 +84,7 @@ public class RemakeList extends Activity {
 			@Override
 			public void onClick(View v) {
 				intent = new Intent(RemakeList.this, CameraActivity.class);
-				intent.putExtra("item", pos);
+				intent.putExtra("item", pos);		// CameraActivity.java에서 사용하기 위함
 				startActivity(intent);
 			}
 		});
@@ -106,6 +106,7 @@ public class RemakeList extends Activity {
 		openPop = false;    //팝업창 open 태그 = false
 	}
 	
+	// BACK키를 눌렀을 때 팝업창 종료
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		super.onKeyDown(keyCode, event);
