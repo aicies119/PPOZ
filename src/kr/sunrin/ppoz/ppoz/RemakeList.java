@@ -17,6 +17,7 @@ public class RemakeList extends Activity {
 	ImageView img; 							// 팝업뷰 이미지 전달용
 	boolean openPop;
 	Intent intent;
+	int pos;
 
 	class Item { 							// 리스트 데이터를 채우는 틀
 		Item(int image, String name) {
@@ -71,17 +72,19 @@ public class RemakeList extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				pos = position;
 				openPop = true;
 				img.setImageResource(arlist.get(position).image);
 				popup.showAtLocation(linear, Gravity.CENTER, 0, 0);
 			}
 		});
 		
-		Button submit = (Button)popupview.findViewById(R.id.popupok);
+		Button submit = (Button)popupview.findViewById(R.id.popupok);		// 팝업확인 버튼
 		submit.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				intent = new Intent(RemakeList.this, CameraActivity.class);
+				intent.putExtra("item", pos);
 				startActivity(intent);
 			}
 		});
