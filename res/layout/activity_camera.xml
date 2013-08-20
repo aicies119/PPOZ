@@ -30,12 +30,12 @@
             />
         <Button
             android:id="@+id/shutter"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="shutter"
             android:textSize="12pt"
             android:paddingTop="8pt"
             android:paddingBottom="10pt"
+            android:background="@drawable/camera2"
             />
     </LinearLayout>
 </LinearLayout>
