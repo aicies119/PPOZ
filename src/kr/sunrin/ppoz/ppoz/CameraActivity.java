@@ -19,8 +19,11 @@ public class CameraActivity extends Activity {
 	Context context = this;
 	Button mShutter;
 	int px;
+	boolean focus, isFocus;
+	ImageView img;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		View vw = new View(this);
 		Window win = getWindow();
 		super.onCreate(savedInstanceState);
 		win.setContentView(R.layout.activity_camera);
@@ -30,31 +33,51 @@ public class CameraActivity extends Activity {
 		LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.camera_guide, null);
 		LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 		
-		ImageView img = new ImageView(this);
+		img = new ImageView(this);
 		img.setImageResource(R.drawable.p_guide_1);
 		LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 		paramImage.setMargins(0, 0, (int)pxFromDp(100), 0);
 		linear.addView(img, paramImage);
 		
 		win.addContentView(linear, paramlinear);
-		
+
+		mShutter = (Button)findViewById(R.id.shutter);
 		mSurface = (MyCameraSurface)findViewById(R.id.preview);
 		
-		//오토 포커스 시작
-		findViewById(R.id.focus).setOnClickListener(new Button.OnClickListener() {
+		/*mShutter.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
-			public void onClick(View v) {
-				mShutter.setEnabled(false);
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
 				mSurface.mCamera.autoFocus(mAutoFocus);
+				return false;
+			}
+		});*/
+		
+		img.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				mSurface.mCamera.autoFocus(mAutoFocus);
+				return true;
 			}
 		});
 		
 		//사진 촬영
-		mShutter = (Button)findViewById(R.id.shutter);
 		mShutter.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mSurface.mCamera.takePicture(null, null, mPicture);
+				if(!focus) {
+					mSurface.mCamera.autoFocus(mAutoFocus);
+					Handler handler = new Handler() {
+						@Override
+						public void handleMessage(Message msg) {
+							mSurface.mCamera.takePicture(null, null, mPicture);
+						}
+					};
+					handler.sendEmptyMessageDelayed(0, 1500);
+				}
+				else {
+					mSurface.mCamera.takePicture(null, null, mPicture);
+				}
 			}
 		});
 	}
@@ -68,7 +91,8 @@ public class CameraActivity extends Activity {
 	AutoFocusCallback mAutoFocus = new AutoFocusCallback() {
 		@Override
 		public void onAutoFocus(boolean success, Camera camera) {
-			mShutter.setEnabled(success);
+			isFocus = success;
+			focus = true;
 		}
 	};
 	
@@ -77,6 +101,7 @@ public class CameraActivity extends Activity {
 		StringBuilder name = new StringBuilder();
 		@Override
 		public void onPictureTaken(byte[] data, Camera camera) {
+			Log.i("PictureTaken", "Picture Taking!");
 			SharedPreferences f_name = getSharedPreferences ("FileName", 0);
 			String f_date = f_name.getString("Date", "");
 			String date = "";
@@ -129,6 +154,7 @@ public class CameraActivity extends Activity {
 			edit.commit();
 			name.setLength(0);
 			
+			focus = isFocus = false;
 			
 			mSurface.mCamera.startPreview();
 		}
