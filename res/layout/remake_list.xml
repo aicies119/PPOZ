@@ -17,7 +17,7 @@
         android:id="@+id/poselist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:numColumns="3"
         android:verticalSpacing="4dip"
         android:horizontalSpacing="4dip"
         android:gravity="center"	/>
