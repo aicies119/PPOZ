@@ -16,7 +16,7 @@ public class RemakeList extends Activity {
 	LinearLayout linear; 					// 어디에 팝업윈도우를 띄울지 가르키는 뷰
 	ImageView img; 							// 팝업뷰 이미지 전달용
 	boolean openPop;						// 팝업창 상태
-	Intent intent;
+	//Intent intent;
 	int pos;								// position 전달용
 
 	class Item { 							// 리스트 데이터를 채우는 틀
@@ -33,7 +33,9 @@ public class RemakeList extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.remake_list);
-		 
+		Intent intent1 = new Intent();
+		//String tmp = intent1.getStringExtra("itemsdfsfd");
+	//	String tmp = intent1.getExtras().getString("item");
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
@@ -83,9 +85,7 @@ public class RemakeList extends Activity {
 		submit.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				intent = new Intent(RemakeList.this, CameraActivity.class);
-				intent.putExtra("item", pos);		// CameraActivity.java에서 사용하기 위함
-				startActivity(intent);
+				sub();
 			}
 		});
 		
@@ -97,6 +97,12 @@ public class RemakeList extends Activity {
 				openPop = false;
 			}
 		});
+	}
+	
+	public void sub() {
+		Intent intent = new Intent(RemakeList.this, CameraActivity.class);
+		intent.putExtra("item", pos);		// CameraActivity.java에서 사용하기 위함
+		startActivity(intent);
 	}
 	
 	@Override

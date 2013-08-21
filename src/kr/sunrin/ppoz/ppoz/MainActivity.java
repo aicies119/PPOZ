@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
 		case R.id.g_ppoz:
 		case R.id.c_ppoz:
 		case R.id.b_ppoz:
-			Intent intent = new Intent(this, RemakeList.class);
+			Intent intent = new Intent(MainActivity.this, RemakeList.class);
 			startActivity(intent);
 			break;
 		case R.id.t_gallery:
