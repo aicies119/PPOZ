@@ -1,22 +1,8 @@
 package kr.sunrin.ppoz.ppoz;
 
-import java.io.*;
-
 import android.app.*;
 import android.content.*;
-import android.content.IntentSender.*;
-import android.content.pm.*;
-import android.content.pm.PackageManager.*;
-import android.content.res.*;
-import android.content.res.Resources.*;
-import android.database.*;
-import android.database.sqlite.*;
-import android.database.sqlite.SQLiteDatabase.*;
-import android.graphics.*;
-import android.graphics.drawable.*;
-import android.net.*;
 import android.os.*;
-import android.util.*;
 import android.view.*;
 
 public class SplashActivity extends Activity {
