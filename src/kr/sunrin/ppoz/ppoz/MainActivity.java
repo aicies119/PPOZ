@@ -35,12 +35,6 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(MainActivity.this, PoseList_S.class);
 			startActivity(intent);
 			break;
-		case R.id.t_gallery:
-			String targetDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
-			Uri targetUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-			targetUri = targetUri.buildUpon().appendQueryParameter("bucketId", String.valueOf(targetDir.toLowerCase().hashCode())).build();
-			Intent intent2 = new Intent(Intent.ACTION_VIEW, targetUri);
-			startActivity(intent2);
 		}
 	}
 }

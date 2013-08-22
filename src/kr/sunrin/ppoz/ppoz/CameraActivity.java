@@ -5,7 +5,9 @@ import android.content.*;
 import android.hardware.*;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
+import android.net.*;
 import android.os.*;
+import android.provider.*;
 import android.view.*;
 import android.widget.*;
 
@@ -44,7 +46,7 @@ public class CameraActivity extends Activity {
 			break;
 		case 3:
 			img = new ImageView(this);
-			img.setImageResource(R.drawable.g_guide_1);
+			img.setImageResource(R.drawable.g_guide_2);
 			break;
 		default:
 			img = new ImageView(this);
@@ -90,6 +92,17 @@ public class CameraActivity extends Activity {
 				else {
 					mSurface.mCamera.takePicture(null, null, mPicture);
 				}
+			}
+		});
+		
+		findViewById(R.id.album).setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String targetDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
+				Uri targetUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+				targetUri = targetUri.buildUpon().appendQueryParameter("bucketId", String.valueOf(targetDir.toLowerCase().hashCode())).build();
+				Intent intent2 = new Intent(Intent.ACTION_VIEW, targetUri);
+				startActivity(intent2);
 			}
 		});
 	}

@@ -33,9 +33,7 @@ public class RemakeList extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.remake_list);
-		Intent intent1 = new Intent();
-		//String tmp = intent1.getStringExtra("itemsdfsfd");
-	//	String tmp = intent1.getExtras().getString("item");
+
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
@@ -55,7 +53,6 @@ public class RemakeList extends Activity {
 		arlist.add(item);
 		item = new Item(R.drawable.ic, "8");
 		arlist.add(item);
-		
 		
 		//GridView 제작
 		GridView poselist = (GridView) findViewById(R.id.poselist);

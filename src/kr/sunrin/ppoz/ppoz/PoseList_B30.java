@@ -33,15 +33,13 @@ public class PoseList_B30 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.remake_list);
-		Intent intent1 = new Intent();
-		//String tmp = intent1.getStringExtra("itemsdfsfd");
-	//	String tmp = intent1.getExtras().getString("item");
+		
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
 		item = new Item(R.drawable.p_guide_2, "1");
 		arlist.add(item);
-		item = new Item(R.drawable.c_guide_1, "2");   
+		item = new Item(R.drawable.c_guide_1, "2");
 		arlist.add(item);
 		item = new Item(R.drawable.p_guide_1, "3");
 		arlist.add(item);
@@ -49,8 +47,6 @@ public class PoseList_B30 extends Activity {
 		arlist.add(item);
 		item = new Item(R.drawable.ko, "5");
 		arlist.add(item);
-		
-		
 		
 		//GridView 제작
 		GridView poselist = (GridView) findViewById(R.id.poselist);
@@ -96,7 +92,7 @@ public class PoseList_B30 extends Activity {
 	
 	public void sub() {
 		Intent intent = new Intent(PoseList_B30.this, CameraActivity.class);
-		intent.putExtra("item", pos);		// CameraActivity.java에서 사용하기 위함
+		intent.putExtra("item", 2);		// CameraActivity.java에서 사용하기 위함
 		startActivity(intent);
 	}
 	

@@ -10,24 +10,31 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         />
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
 		android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:gravity="center_vertical"
         android:background="#000000"
         android:layout_weight="5"
         >
         <Button
+            android:id="@+id/album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+            android:paddingTop="5dp"
+            android:background="@drawable/album"
+            />
+        <Button
             android:id="@+id/shutter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:textSize="12pt"
             android:paddingTop="8pt"
             android:paddingBottom="10pt"
             android:background="@drawable/shutter"
             />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

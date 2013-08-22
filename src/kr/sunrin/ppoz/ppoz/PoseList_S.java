@@ -33,9 +33,7 @@ public class PoseList_S extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.remake_list);
-		Intent intent1 = new Intent();
-		//String tmp = intent1.getStringExtra("itemsdfsfd");
-	//	String tmp = intent1.getExtras().getString("item");
+
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
@@ -54,8 +52,6 @@ public class PoseList_S extends Activity {
 		item = new Item(R.drawable.p_guide_2, "7");
 		arlist.add(item);
 
-		
-		
 		//GridView 제작
 		GridView poselist = (GridView) findViewById(R.id.poselist);
 		ListAdapter listadapter = new ListAdapter(this, R.layout.listbutton,
@@ -100,7 +96,7 @@ public class PoseList_S extends Activity {
 	
 	public void sub() {
 		Intent intent = new Intent(PoseList_S.this, CameraActivity.class);
-		intent.putExtra("item", pos);		// CameraActivity.java에서 사용하기 위함
+		intent.putExtra("item", 1);		// CameraActivity.java에서 사용하기 위함
 		startActivity(intent);
 	}
 	
