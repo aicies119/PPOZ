@@ -32,7 +32,19 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="kr.sunrin.ppoz.ppoz.RemakeList"
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_P"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_G"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_B30"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_S"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity

@@ -20,10 +20,19 @@ public class MainActivity extends Activity {
 	public void mainOnClick(View v) {
 		switch(v.getId()) {
 		case R.id.p_ppoz:
+			Intent intent_p = new Intent(MainActivity.this, PoseList_P.class);
+			startActivity(intent_p);
+			break;
 		case R.id.g_ppoz:
+			Intent intent_g = new Intent(MainActivity.this, PoseList_G.class);
+			startActivity(intent_g);
+			break;
 		case R.id.c_ppoz:
+			Intent intent_b30 = new Intent(MainActivity.this, PoseList_B30.class);
+			startActivity(intent_b30);
+			break;
 		case R.id.b_ppoz:
-			Intent intent = new Intent(MainActivity.this, RemakeList.class);
+			Intent intent = new Intent(MainActivity.this, PoseList_S.class);
 			startActivity(intent);
 			break;
 		case R.id.t_gallery:
