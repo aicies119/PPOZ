@@ -1,15 +1,20 @@
 package kr.sunrin.ppoz.ppoz;
 
-import android.app.*;
-import android.content.*;
-import android.hardware.*;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
-import android.net.*;
-import android.os.*;
-import android.provider.*;
-import android.view.*;
-import android.widget.*;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class CameraActivity extends Activity {
 	MyCameraSurface mSurface;
@@ -19,7 +24,9 @@ public class CameraActivity extends Activity {
 	Intent intent;
 	boolean focus, isFocus;
 	byte[] mData;
-	ImageView img;
+	MoveObject MO;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Window win = getWindow();
@@ -33,31 +40,39 @@ public class CameraActivity extends Activity {
 		LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.camera_guide, null);
 		LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
+		
+		// 가이드라인과 카메라 화면의 크기를 맞출 수치 구한다
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		
 		//가이드 영역 이미지뷰 생성
 		switch(itemNo) {
 		case 1:
-			img = new ImageView(this);
-			img.setImageResource(R.drawable.p_guide_2);
+			MO = new MoveObject(this);
+			MO.setResource(R.drawable.p_guide_2);
+			MO.setSize(metrics.heightPixels, metrics.widthPixels);
 			break;
 		case 2:
-			img = new ImageView(this);
-			img.setImageResource(R.drawable.c_guide_1);
+			MO = new MoveObject(this);
+			MO.setResource(R.drawable.c_guide_1);
+			MO.setSize(metrics.heightPixels, metrics.widthPixels);
 			break;
 		case 3:
-			img = new ImageView(this);
-			img.setImageResource(R.drawable.g_guide_2);
+			MO = new MoveObject(this);
+			MO.setResource(R.drawable.g_guide_2);
+			MO.setSize(metrics.heightPixels, metrics.widthPixels);
 			break;
 		default:
-			img = new ImageView(this);
-			img.setImageResource(R.drawable.p_guide_1);
+			MO = new MoveObject(this);
+			MO.setResource(R.drawable.p_guide_1);
+			MO.setSize(metrics.heightPixels, metrics.widthPixels);
 		}
 		
 		LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 		paramImage.setMargins(0, 0, (int)pxFromDp(100), 0);
 		
 		//가이드 레이어에 이미지뷰 싣고
-		linear.addView(img, paramImage);
+		linear.addView(MO, paramImage);
 		
 		intent = new Intent(this, PreviewActivity.class);
 		//가이드 레이어를 뷰 위에 올린다.
@@ -67,13 +82,14 @@ public class CameraActivity extends Activity {
 		mSurface = (MyCameraSurface)findViewById(R.id.preview);
 		
 		//미리보기 영역 터치 시 오토포커싱 적용
-		img.setOnTouchListener(new View.OnTouchListener() {
+/*		img.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				mSurface.mCamera.autoFocus(mAutoFocus);
-				return true;
+				return false;
 			}
 		});
+		*/
 		
 		//사진 촬영
 		mShutter.setOnClickListener(new Button.OnClickListener() {
@@ -95,21 +111,25 @@ public class CameraActivity extends Activity {
 			}
 		});
 		
-		findViewById(R.id.album).setOnClickListener(new Button.OnClickListener() {
+/*		findViewById(R.id.album).setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				String targetDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
-				Uri targetUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-				targetUri = targetUri.buildUpon().appendQueryParameter("bucketId", String.valueOf(targetDir.toLowerCase().hashCode())).build();
+				Uri targetUri = Meore.Images.Media.EXTERNAL_CONTENT_URI;
+				targetUri = targetdiaStUri.buildUpon().appendQueryParameter("bucketId", String.valueOf(targetDir.toLowerCase().hashCode())).build();
 				Intent intent2 = new Intent(Intent.ACTION_VIEW, targetUri);
 				startActivity(intent2);
 			}
-		});
+		});*/
 	}
-	
+
 	private float pxFromDp(float dp)
 	{
 	    return dp * context.getResources().getDisplayMetrics().density;
+	}
+	
+	public void mfocus(){
+		mSurface.mCamera.autoFocus(mAutoFocus);
 	}
 	
 	//포커싱 성공하면 촬영 허가
