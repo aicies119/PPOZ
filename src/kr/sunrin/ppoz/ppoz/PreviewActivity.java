@@ -14,6 +14,8 @@ import android.widget.*;
 public class PreviewActivity extends Activity {
 	byte[] data;
 	Intent send_intent = new Intent();
+	String path = "";
+	final static int ACT_SHARE = 1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,7 +41,27 @@ public class PreviewActivity extends Activity {
 				finish();
 			}
 		});
-		
+		findViewById(R.id.pre_share).setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v){
+				if(path == "") {
+					pictureSave(data);
+				}
+				Intent intent = new Intent();
+				intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+				intent.putExtra(Intent.EXTRA_SUBJECT, "Here are some files");
+				intent.setType("image/jpeg");
+				
+				ArrayList<Uri> files = new ArrayList<Uri>();
+				
+				File file = new File(path);
+				Uri uri = Uri.fromFile(file);
+				files.add(uri);
+				
+				intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, files);
+				startActivity(intent.createChooser(intent, "°øÀ¯"));
+			}
+		});
 	}
 
 	
@@ -62,7 +84,7 @@ public class PreviewActivity extends Activity {
 		name.append(String.format("-%d", cnt));
 		
 		String sd = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
-		String path = sd + "/" + name + ".jpg";
+		path = sd + "/" + name + ".jpg";
 		
 		File fpath = new File(sd);
 		if(!fpath.exists()) {

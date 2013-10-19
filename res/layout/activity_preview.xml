@@ -28,5 +28,12 @@
             android:layout_height="wrap_content"
             android:text="취소"
             android:layout_weight="1"/>
+        <Button
+            android:id="@+id/pre_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="공유"
+            android:layout_weight="1"
+            />
     </LinearLayout>
 </RelativeLayout>
