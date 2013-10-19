@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff" >
+    android:background="@drawable/popup" >
     
     <ImageView
         android:id="@+id/popupimage"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="확인"
+            android:background="@drawable/popup_ok"
             android:textSize="15sp"	/>
         
         <Button
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="취소"
+            android:background="@drawable/popup_cancel"
             android:textSize="15sp"	/>
         
     </LinearLayout>

@@ -24,7 +24,7 @@ public class CameraActivity extends Activity {
 	Intent intent;
 	boolean focus, isFocus;
 	byte[] mData;
-	MoveObject MO;
+	MoveObject mo;
 	
 	
 	@Override
@@ -34,6 +34,7 @@ public class CameraActivity extends Activity {
 		win.setContentView(R.layout.activity_camera);
 		
 		Intent list_pos = getIntent();
+		int typeNo = list_pos.getIntExtra("type", -1);
 		int itemNo = list_pos.getIntExtra("item", -1);
 		
 		//가이드 영역 레이어 생성
@@ -46,33 +47,71 @@ public class CameraActivity extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		
 		//가이드 영역 이미지뷰 생성
-		switch(itemNo) {
+		switch(typeNo) {
+		case 0:
+			switch(itemNo) {
+			case 0:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_1);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				break;
+			default:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_1);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+			}
+			break;
 		case 1:
-			MO = new MoveObject(this);
-			MO.setResource(R.drawable.p_guide_2);
-			MO.setSize(metrics.heightPixels, metrics.widthPixels);
+			switch(itemNo) {
+			case 0:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.g_guide_1);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				break;
+			case 1:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.piramid);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				break;
+			default:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.g_guide_1);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+			}
 			break;
 		case 2:
-			MO = new MoveObject(this);
-			MO.setResource(R.drawable.c_guide_1);
-			MO.setSize(metrics.heightPixels, metrics.widthPixels);
+			switch(itemNo) {
+			case 0:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.das);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				break;
+			default:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.das);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+			}
 			break;
 		case 3:
-			MO = new MoveObject(this);
-			MO.setResource(R.drawable.g_guide_2);
-			MO.setSize(metrics.heightPixels, metrics.widthPixels);
+			switch(itemNo) {
+			case 0:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_2);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				break;
+			default:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_2);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+			}
 			break;
-		default:
-			MO = new MoveObject(this);
-			MO.setResource(R.drawable.p_guide_1);
-			MO.setSize(metrics.heightPixels, metrics.widthPixels);
 		}
 		
 		LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 		paramImage.setMargins(0, 0, (int)pxFromDp(100), 0);
 		
 		//가이드 레이어에 이미지뷰 싣고
-		linear.addView(MO, paramImage);
+		linear.addView(mo, paramImage);
 		
 		intent = new Intent(this, PreviewActivity.class);
 		//가이드 레이어를 뷰 위에 올린다.

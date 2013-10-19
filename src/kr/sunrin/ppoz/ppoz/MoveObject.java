@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
 import android.util.FloatMath;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -39,12 +38,10 @@ class Control_Img {
      
     // 드래그 모드인지 핀치줌 모드인지 구분
     static final int NONE = 0;
-    static final int FOCUS = 1;
     static final int DRAG = 1;
     static final int ZOOM = 2;
     
     int mode = NONE;
-    int focusCheck = NONE;
     
     
   //Image를 인자로 받는다.
@@ -70,7 +67,6 @@ class Control_Img {
                     Log.d("zoom", "mode=DRAG" );
      
                     mode = DRAG;
-                    focusCheck = FOCUS;
                 }
             	
                 break;
@@ -82,7 +78,6 @@ class Control_Img {
             		mode = NONE;
             		break;
             	}
-            	focusCheck = NONE;
                 if(mode == DRAG) {   // 드래그 중이면, 이미지의 X,Y값을 변환시키면서 위치 이동.
                     X=posX2-offsetX;
                     Y=posY2-offsetY;
@@ -104,7 +99,6 @@ class Control_Img {
                          Width=Width*(1+scale);
                          
                          oldDist = newDist;
-                         
                      } else if(oldDist - newDist > 20) {  // zoom out
                          float scale=FloatMath.sqrt(((newDist-oldDist)*(newDist-oldDist))/(Height*Height + Width * Width));
                          scale=0-scale;
@@ -122,8 +116,6 @@ class Control_Img {
             case MotionEvent.ACTION_UP:    // 첫번째 손가락을 떼었을 경우
             case MotionEvent.ACTION_POINTER_UP:  // 두번째 손가락을 떼었을 경우
                 mode = NONE;
-//                CA.mfocus();
-                focusCheck = NONE;
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:  
             //두번째 손가락 터치(손가락 2개를 인식하였기 때문에 핀치 줌으로 판별)

@@ -39,22 +39,6 @@ public class PoseList_P extends Activity {
 		Item item;
 		item = new Item(R.drawable.p_guide_1, "1");
 		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "2");   
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "3");
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "4");
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "5");
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "6");
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "7");
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "8");
-		arlist.add(item);
-		item = new Item(R.drawable.p_guide_1, "9");
-		arlist.add(item);
 		
 		//GridView 제작
 		GridView poselist = (GridView) findViewById(R.id.poselist);
@@ -84,7 +68,7 @@ public class PoseList_P extends Activity {
 		submit.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				sub();
+				sub(pos);
 			}
 		});
 		
@@ -98,9 +82,10 @@ public class PoseList_P extends Activity {
 		});
 	}
 	
-	public void sub() {
+	public void sub(int position) {
 		Intent intent = new Intent(PoseList_P.this, CameraActivity.class);
-		intent.putExtra("item", 0);		// CameraActivity.java에서 사용하기 위함
+		intent.putExtra("type", 0);
+		intent.putExtra("item", position);		// CameraActivity.java에서 사용하기 위함
 		startActivity(intent);
 	}
 	
