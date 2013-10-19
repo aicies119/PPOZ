@@ -61,7 +61,7 @@ class Control_Img {
         int act = event.getAction();
          switch(act & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:    //첫번째 손가락 터치
-                if(InObject(event.getX(), event.getY())){//손가락 터치 위치가 이미지 안에 있으면 DragMode가 시작된다.
+            	if(InObject(event.getX(), event.getY())){//손가락 터치 위치가 이미지 안에 있으면 DragMode가 시작된다.
                     posX1 = (int) event.getX();
                     posY1 = (int) event.getY();
                     offsetX=posX1-X;
@@ -72,15 +72,20 @@ class Control_Img {
                     mode = DRAG;
                     focusCheck = FOCUS;
                 }
+            	
                 break;
  
             case MotionEvent.ACTION_MOVE:
+                posX2 = (int) event.getX();
+                posY2 = (int) event.getY();
+            	if(posX2-posX1 == 0 && posY2-posY1 ==0) { //터치 후 터치 좌표가 바뀌지 않았다면 드래그 모드 해제.
+            		mode = NONE;
+            		break;
+            	}
             	focusCheck = NONE;
                 if(mode == DRAG) {   // 드래그 중이면, 이미지의 X,Y값을 변환시키면서 위치 이동.
                     X=posX2-offsetX;
                     Y=posY2-offsetY;
-                    posX2 = (int) event.getX();
-                    posY2 = (int) event.getY();
                     if(Math.abs(posX2-posX1)>20 || Math.abs(posY2-posY1)>20) {
                         posX1 = posX2;
                         posY1 = posY2;
