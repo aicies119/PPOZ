@@ -25,31 +25,33 @@ public class CameraActivity extends Activity {
 	boolean focus, isFocus;
 	byte[] mData;
 	MoveObject mo;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Window win = getWindow();
 		super.onCreate(savedInstanceState);
 		win.setContentView(R.layout.activity_camera);
-		
+
 		Intent list_pos = getIntent();
 		int typeNo = list_pos.getIntExtra("type", -1);
 		int itemNo = list_pos.getIntExtra("item", -1);
-		
-		//가이드 영역 레이어 생성
-		LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.camera_guide, null);
-		LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-		
+
+		// 가이드 영역 레이어 생성
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LinearLayout linear = (LinearLayout) inflater.inflate(
+				R.layout.camera_guide, null);
+		LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.MATCH_PARENT);
+
 		// 가이드라인과 카메라 화면의 크기를 맞출 수치 구한다
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		
-		//가이드 영역 이미지뷰 생성
-		switch(typeNo) {
+
+		// 가이드 영역 이미지뷰 생성
+		switch (typeNo) {
 		case 0:
-			switch(itemNo) {
+			switch (itemNo) {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_1);
@@ -62,7 +64,7 @@ public class CameraActivity extends Activity {
 			}
 			break;
 		case 1:
-			switch(itemNo) {
+			switch (itemNo) {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.g_guide_1);
@@ -80,7 +82,7 @@ public class CameraActivity extends Activity {
 			}
 			break;
 		case 2:
-			switch(itemNo) {
+			switch (itemNo) {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.das);
@@ -93,7 +95,7 @@ public class CameraActivity extends Activity {
 			}
 			break;
 		case 3:
-			switch(itemNo) {
+			switch (itemNo) {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_2);
@@ -106,35 +108,35 @@ public class CameraActivity extends Activity {
 			}
 			break;
 		}
-		
-		LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-		paramImage.setMargins(0, 0, (int)pxFromDp(100), 0);
-		
-		//가이드 레이어에 이미지뷰 싣고
+
+		LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.MATCH_PARENT);
+		paramImage.setMargins(0, 0, (int) pxFromDp(100), 0);
+
+		// 가이드 레이어에 이미지뷰 싣고
 		linear.addView(mo, paramImage);
-		
+
 		intent = new Intent(this, PreviewActivity.class);
-		//가이드 레이어를 뷰 위에 올린다.
+		// 가이드 레이어를 뷰 위에 올린다.
 		win.addContentView(linear, paramlinear);
 
-		mShutter = (Button)findViewById(R.id.shutter);
-		mSurface = (MyCameraSurface)findViewById(R.id.preview);
-		
-		//미리보기 영역 터치 시 오토포커싱 적용
-/*		img.setOnTouchListener(new View.OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				mSurface.mCamera.autoFocus(mAutoFocus);
-				return false;
-			}
-		});
-		*/
-		
-		//사진 촬영
+		mShutter = (Button) findViewById(R.id.shutter);
+		mSurface = (MyCameraSurface) findViewById(R.id.preview);
+
+		// 미리보기 영역 터치 시 오토포커싱 적용
+		/*
+		 * img.setOnTouchListener(new View.OnTouchListener() {
+		 * 
+		 * @Override public boolean onTouch(View v, MotionEvent event) {
+		 * mSurface.mCamera.autoFocus(mAutoFocus); return false; } });
+		 */
+
+		// 사진 촬영
 		mShutter.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(!focus) {
+				if (!focus) {
 					mSurface.mCamera.autoFocus(mAutoFocus);
 					Handler handler = new Handler() {
 						@Override
@@ -143,35 +145,36 @@ public class CameraActivity extends Activity {
 						}
 					};
 					handler.sendEmptyMessageDelayed(0, 1500);
-				}
-				else {
+				} else {
 					mSurface.mCamera.takePicture(null, null, mPicture);
 				}
 			}
 		});
-		
-/*		findViewById(R.id.album).setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String targetDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
-				Uri targetUri = Meore.Images.Media.EXTERNAL_CONTENT_URI;
-				targetUri = targetdiaStUri.buildUpon().appendQueryParameter("bucketId", String.valueOf(targetDir.toLowerCase().hashCode())).build();
-				Intent intent2 = new Intent(Intent.ACTION_VIEW, targetUri);
-				startActivity(intent2);
-			}
-		});*/
+
+		/*
+		 * findViewById(R.id.album).setOnClickListener(new
+		 * Button.OnClickListener() {
+		 * 
+		 * @Override public void onClick(View v) { String targetDir =
+		 * Environment.getExternalStorageDirectory().getAbsolutePath() +
+		 * "/ppoz"; Uri targetUri = Meore.Images.Media.EXTERNAL_CONTENT_URI;
+		 * targetUri =
+		 * targetdiaStUri.buildUpon().appendQueryParameter("bucketId",
+		 * String.valueOf(targetDir.toLowerCase().hashCode())).build(); Intent
+		 * intent2 = new Intent(Intent.ACTION_VIEW, targetUri);
+		 * startActivity(intent2); } });
+		 */
 	}
 
-	private float pxFromDp(float dp)
-	{
-	    return dp * context.getResources().getDisplayMetrics().density;
+	private float pxFromDp(float dp) {
+		return dp * context.getResources().getDisplayMetrics().density;
 	}
-	
-	public void mfocus(){
+
+	public void mfocus() {
 		mSurface.mCamera.autoFocus(mAutoFocus);
 	}
-	
-	//포커싱 성공하면 촬영 허가
+
+	// 포커싱 성공하면 촬영 허가
 	AutoFocusCallback mAutoFocus = new AutoFocusCallback() {
 		@Override
 		public void onAutoFocus(boolean success, Camera camera) {
@@ -179,8 +182,8 @@ public class CameraActivity extends Activity {
 			focus = true;
 		}
 	};
-	
-	//사진 저장
+
+	// 사진 저장
 	PictureCallback mPicture = new PictureCallback() {
 		@Override
 		public void onPictureTaken(byte[] data, Camera camera) {
@@ -189,15 +192,15 @@ public class CameraActivity extends Activity {
 			startActivityForResult(intent, 0);
 		}
 	};
-	
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch(resultCode) {
+		switch (resultCode) {
 		case RESULT_OK:
 			finish();
 			break;
 		}
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();

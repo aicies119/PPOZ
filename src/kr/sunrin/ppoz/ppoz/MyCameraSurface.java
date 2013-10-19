@@ -30,7 +30,7 @@ class MyCameraSurface extends SurfaceView implements SurfaceHolder.Callback {
 		}
 	}
 
-    // 표면 파괴시 카메라도 파괴한다.
+	// 표면 파괴시 카메라도 파괴한다.
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		if (mCamera != null) {
 			mCamera.stopPreview();
@@ -40,7 +40,8 @@ class MyCameraSurface extends SurfaceView implements SurfaceHolder.Callback {
 	}
 
 	// 표면의 크기가 결정될 때 최적의 미리보기 크기를 구해 설정한다.
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,	int height) {
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
 		Camera.Parameters params = mCamera.getParameters();
 		List<Size> arSize = params.getSupportedPreviewSizes();
 		if (arSize == null) {
@@ -52,7 +53,6 @@ class MyCameraSurface extends SurfaceView implements SurfaceHolder.Callback {
 				if (Math.abs(s.height - height) < diff) {
 					diff = Math.abs(s.height - height);
 					opti = s;
-					
 				}
 			}
 			params.setPreviewSize(opti.width, opti.height);
