@@ -39,7 +39,7 @@ public class PoseList_G extends Activity {
 		Item item;
 		item = new Item(R.drawable.g_guide_1, "1");
 		arlist.add(item);
-		item = new Item(R.drawable.piramid, "2");
+		item = new Item(R.drawable.g_guide_2, "2");
 		arlist.add(item);
 		
 		//GridView ¡¶¿€

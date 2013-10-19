@@ -37,7 +37,11 @@ public class PoseList_B30 extends Activity {
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
-		item = new Item(R.drawable.das, "1");
+		item = new Item(R.drawable.c_guide_1, "1");
+		arlist.add(item);
+		item = new Item(R.drawable.c_guide_2, "2");
+		arlist.add(item);
+		item = new Item(R.drawable.c_guide_3, "3");
 		arlist.add(item);
 
 		// GridView 제작
