@@ -1,20 +1,14 @@
 package kr.sunrin.ppoz.ppoz;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.hardware.Camera;
+import android.app.*;
+import android.content.*;
+import android.hardware.*;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.os.*;
+import android.util.*;
+import android.view.*;
+import android.widget.*;
 
 public class CameraActivity extends Activity {
 	MyCameraSurface mSurface;
