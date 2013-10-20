@@ -153,15 +153,15 @@ public class PoseList_P extends Activity {
 				convertView
 						.setLayoutParams(new GridView.LayoutParams(200, 280));		// LayoutParams(200, 200)가 각 뷰의 크기
 			}
+
+			// 텍스트
+			TextView txt = (TextView) convertView.findViewById(R.id.posename);
+			txt.setText(arlist.get(pos).name);
 			
 			// 이미지
 			ImageView img = (ImageView) convertView
 					.findViewById(R.id.poseimage);
 			img.setImageResource(arlist.get(pos).image);
-			
-			//텍스트
-			TextView txt = (TextView) convertView.findViewById(R.id.posename);
-			txt.setText(arlist.get(pos).name);
 			return convertView;
 		}
 	}
