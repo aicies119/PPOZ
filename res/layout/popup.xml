@@ -14,30 +14,26 @@
         android:layout_marginRight="7dp"
         android:layout_marginTop="13dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="3"/>
+        android:layout_weight="1"/>
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="5">
         
         <Button
             android:id="@+id/popupok"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/popup_ok"
-            android:textSize="15sp"	/>
+            android:background="@drawable/btn_ok_set"/>
         
         <Button
             android:id="@+id/popupcancel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/popup_cancel"
-            android:textSize="15sp"	/>
+            android:background="@drawable/btn_cancel_set"/>
         
     </LinearLayout>
-    
-	
 </LinearLayout>

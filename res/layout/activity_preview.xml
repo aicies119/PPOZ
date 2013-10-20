@@ -18,21 +18,21 @@
 		android:layout_alignParentBottom="true">
         <Button 
             android:id="@+id/pre_ok"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="확인"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+            android:background="@drawable/btn_ok_set"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/pre_cancel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="취소"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/btn_cancel_set"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/pre_share"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="공유"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+            android:background="@drawable/btn_share_set"
             android:layout_weight="1"
             />
     </LinearLayout>
