@@ -5,7 +5,9 @@ import android.content.*;
 import android.hardware.*;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
+import android.net.*;
 import android.os.*;
+import android.provider.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
@@ -13,7 +15,7 @@ import android.widget.*;
 public class CameraActivity extends Activity {
 	MyCameraSurface mSurface;
 	Context context = this;
-	Button mShutter;
+	Button mShutter, mGallary;
 	int px;
 	Intent intent;
 	boolean focus, isFocus;
@@ -131,6 +133,7 @@ public class CameraActivity extends Activity {
 		win.addContentView(linear, paramlinear);
 
 		mShutter = (Button) findViewById(R.id.shutter);
+		mGallary = (Button) findViewById(R.id.gallary);
 		mSurface = (MyCameraSurface) findViewById(R.id.preview);
 
 		// 미리보기 영역 터치 시 오토포커싱 적용
@@ -157,6 +160,16 @@ public class CameraActivity extends Activity {
 				} else {
 					mSurface.mCamera.takePicture(null, null, mPicture);
 				}
+			}
+		});
+		mGallary.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String targetDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ppoz";
+				Uri targetUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+				targetUri = targetUri.buildUpon().appendQueryParameter("bucketId", String.valueOf(targetDir.toLowerCase().hashCode())).build();
+				Intent intent2 = new Intent(Intent.ACTION_VIEW, targetUri);
+				startActivity(intent2); 
 			}
 		});
 
