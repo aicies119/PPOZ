@@ -37,9 +37,9 @@ public class PoseList_G extends Activity {
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
-		item = new Item(R.drawable.g_guide_1, "1");
+		item = new Item(R.drawable.g_guide_1, "5기통 춤");
 		arlist.add(item);
-		item = new Item(R.drawable.g_guide_2, "2");
+		item = new Item(R.drawable.g_guide_2, "피라미드");
 		arlist.add(item);
 		
 		//GridView 제작

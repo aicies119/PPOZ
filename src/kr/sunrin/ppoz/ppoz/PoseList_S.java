@@ -10,7 +10,7 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class PoseList_S extends Activity {
-	ArrayList<Item> arlist; 				// 리스트 데이터
+/*	ArrayList<Item> arlist; 				// 리스트 데이터
 	PopupWindow popup; 						// 팝업윈도우
 	View popupview; 						// 팝업윈도우에 띄우는 뷰
 	LinearLayout linear; 					// 어디에 팝업윈도우를 띄울지 가르키는 뷰
@@ -28,12 +28,12 @@ public class PoseList_S extends Activity {
 		int image;							// 포즈 이미지
 		String name;						// 포즈 제목
 	}
-
+*/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_list);
-
+		setContentView(R.layout.layout_construction);
+/*
 		// 리스트 데이터 채우기
 		arlist = new ArrayList<Item>();
 		Item item;
@@ -161,6 +161,6 @@ public class PoseList_S extends Activity {
 					.findViewById(R.id.poseimage);
 			img.setImageResource(arlist.get(pos).image);
 			return convertView;
-		}
+		}*/
 	}
 }
