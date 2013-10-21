@@ -5,6 +5,7 @@ import android.content.*;
 import android.hardware.*;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
+import android.media.*;
 import android.net.*;
 import android.os.*;
 import android.provider.*;
@@ -21,6 +22,8 @@ public class CameraActivity extends Activity {
 	boolean focus, isFocus;
 	byte[] mData;
 	MoveObject mo;
+	SoundPool soundPool;
+	int shutterSound;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +157,8 @@ public class CameraActivity extends Activity {
 						@Override
 						public void handleMessage(Message msg) {
 							mSurface.mCamera.takePicture(null, null, mPicture);
+							playshutter();
+							
 						}
 					};
 					handler.sendEmptyMessageDelayed(0, 1500);
@@ -172,7 +177,6 @@ public class CameraActivity extends Activity {
 				startActivity(intent2); 
 			}
 		});
-
 		/*
 		 * findViewById(R.id.album).setOnClickListener(new
 		 * Button.OnClickListener() {
@@ -226,5 +230,11 @@ public class CameraActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
+	}
+	
+	public void playshutter() {
+		soundPool = new SoundPool(1, AudioManager.STREAM_ALARM, 0);
+		shutterSound = soundPool.load(this, R.raw.camera_click, 0);
+		soundPool.play(shutterSound, 1f, 1f, 0, 0, 1);
 	}
 }
