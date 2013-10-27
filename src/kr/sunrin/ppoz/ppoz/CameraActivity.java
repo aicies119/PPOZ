@@ -147,6 +147,9 @@ public class CameraActivity extends Activity {
 		 * mSurface.mCamera.autoFocus(mAutoFocus); return false; } });
 		 */
 
+		// º≈≈Õ¿Ω ¡ÿ∫Ò
+		soundPool = new SoundPool(1, AudioManager.STREAM_ALARM, 0);
+		shutterSound = soundPool.load(this, R.raw.camera_click, 0);
 		// ªÁ¡¯ √‘øµ
 		mShutter.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -157,7 +160,7 @@ public class CameraActivity extends Activity {
 						@Override
 						public void handleMessage(Message msg) {
 							mSurface.mCamera.takePicture(null, null, mPicture);
-							playshutter();
+							soundPool.play(shutterSound, 1f, 1f, 0, 0, 1);	// º≈≈Õ¿Ω Ω««‡
 							
 						}
 					};
@@ -232,9 +235,4 @@ public class CameraActivity extends Activity {
 		super.onResume();
 	}
 	
-	public void playshutter() {
-		soundPool = new SoundPool(1, AudioManager.STREAM_ALARM, 0);
-		shutterSound = soundPool.load(this, R.raw.camera_click, 0);
-		soundPool.play(shutterSound, 1f, 1f, 0, 0, 1);
-	}
 }
