@@ -153,7 +153,7 @@ public class PoseList_B30 extends Activity {
 			if (convertView == null) {
 				convertView = Inflater.inflate(layout, parent, false);
 				convertView
-						.setLayoutParams(new GridView.LayoutParams(200, 280)); // LayoutParams(200, 200)가 각 뷰의 크기
+						.setLayoutParams(new GridView.LayoutParams(200, 240)); // LayoutParams(200, 200)가 각 뷰의 크기
 			}
 
 			// 텍스트

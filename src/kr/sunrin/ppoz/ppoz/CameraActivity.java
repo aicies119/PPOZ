@@ -54,17 +54,47 @@ public class CameraActivity extends Activity {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			case 1:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_2);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 2:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_3);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 3:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_4);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 4:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_5);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 5:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_6);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 6:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_7);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 7:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.p_guide_8);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			default:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 			}
 			break;
 		case 1:
@@ -72,17 +102,37 @@ public class CameraActivity extends Activity {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.g_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			case 1:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.g_guide_2);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 2:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.g_guide_3);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 3:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.g_guide_4);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 4:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.g_guide_5);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
+				break;
+			case 5:
+				mo = new MoveObject(this);
+				mo.setResource(R.drawable.g_guide_6);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			default:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.g_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 			}
 			break;
 		case 2:
@@ -90,22 +140,22 @@ public class CameraActivity extends Activity {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.c_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			case 1:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.c_guide_2);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			case 2:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.c_guide_3);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			default:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.c_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 			}
 			break;
 		case 3:
@@ -113,12 +163,12 @@ public class CameraActivity extends Activity {
 			case 0:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 				break;
 			default:
 				mo = new MoveObject(this);
 				mo.setResource(R.drawable.p_guide_1);
-				mo.setSize(metrics.heightPixels, metrics.widthPixels);
+				mo.setSize(metrics.heightPixels, metrics.widthPixels-140);
 			}
 			break;
 		}

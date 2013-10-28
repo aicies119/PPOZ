@@ -41,6 +41,14 @@ public class PoseList_G extends Activity {
 		arlist.add(item);
 		item = new Item(R.drawable.g_guide_2, "피라미드");
 		arlist.add(item);
+		item = new Item(R.drawable.g_guide_3, "벽기대기");
+		arlist.add(item);
+		item = new Item(R.drawable.g_guide_4, "왈츠");
+		arlist.add(item);
+		item = new Item(R.drawable.g_guide_5, "크레용팝");
+		arlist.add(item);
+		item = new Item(R.drawable.g_guide_6, "퓨전");
+		arlist.add(item);
 		
 		//GridView 제작
 		GridView poselist = (GridView) findViewById(R.id.poselist);
@@ -151,7 +159,7 @@ public class PoseList_G extends Activity {
 			if (convertView == null) {
 				convertView = Inflater.inflate(layout, parent, false);
 				convertView
-						.setLayoutParams(new GridView.LayoutParams(200, 280));		// LayoutParams(200, 200)가 각 뷰의 크기
+						.setLayoutParams(new GridView.LayoutParams(200, 240));		// LayoutParams(200, 200)가 각 뷰의 크기
 			}
 
 			// 텍스트
