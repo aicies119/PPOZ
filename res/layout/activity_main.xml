@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_logo"
+    android:gravity="bottom|center_horizontal"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp" >
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/p_ppoz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/main_btn1"
+                android:onClick="buttonOnClick" />
+
+            <Button
+                android:id="@+id/g_ppoz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/main_btn2"
+                android:onClick="buttonOnClick" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/c_ppoz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/main_btn3"
+                android:onClick="buttonOnClick" />
+
+            <Button
+                android:id="@+id/s_ppoz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/main_btn4"
+                android:onClick="buttonOnClick" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

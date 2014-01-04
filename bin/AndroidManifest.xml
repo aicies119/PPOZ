@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.sunrin.ppoz.ppoz"
+    android:versionCode="3"
+    android:versionName="0.9.2" >
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/PPOZTheme" >
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_Base"
+            android:label="@string/title_activity_pose_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_P"
+            android:label="@string/title_activity_pose_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_G"
+            android:label="@string/title_activity_pose_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_C"
+            android:label="@string/title_activity_pose_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PoseList_S"
+            android:label="@string/title_activity_pose_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.CameraActivity"
+            android:label="@string/title_activity_camera"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="kr.sunrin.ppoz.ppoz.PreviewActivity"
+            android:label="@string/title_activity_preview"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>
